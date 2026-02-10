@@ -22,7 +22,7 @@ public class TodoService {
 
     // Pageable info
 
-    public Page<Todo> getAllPages(int page, int size){
+    public Page<Todo> getAllTodoPages(int page, int size){
         Pageable pageable = PageRequest.of(page, size);
         return todoRepository.findAll(pageable);
     }

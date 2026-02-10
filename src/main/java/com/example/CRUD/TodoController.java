@@ -2,6 +2,7 @@ package com.example.CRUD;
 
 import com.example.CRUD.models.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -52,6 +53,14 @@ public class TodoController {
     @DeleteMapping("/{id}")
     void deleteTodoById(@PathVariable Long id){
         todoService.deleteTodoById(id);
+    }
+
+    //Pageable
+
+    @GetMapping("/page")
+    ResponseEntity<Page<Todo>> getAllTodosPaged(@RequestParam int page, int size){
+        return new ResponseEntity<>(todoService.getAllTodoPages(page, size), HttpStatus.OK);
+
     }
 
 
