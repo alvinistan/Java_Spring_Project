@@ -1,5 +1,7 @@
 package com.example.CRUD.models;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.models.examples.Example;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +21,7 @@ public class Todo {
     @GeneratedValue
     Long id;
     @NotBlank(message = "title is required..")
+    @Schema(name = "title", example = "Must be started in Capital")
     String title;
     @NotBlank
     //@Size(min = 2 ,max =10)

@@ -1,6 +1,8 @@
 package com.example.CRUD;
 
 import com.example.CRUD.models.Todo;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,6 +28,11 @@ public class TodoController {
     }
 
     //  find Element By Id
+
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Todo Retrieved Successfully"),
+            @ApiResponse(responseCode = "404", description = "Todo Was not found!.")
+    })
 
     @GetMapping("/{id}")
     public ResponseEntity<Todo> getTodoById(@PathVariable long id) {
