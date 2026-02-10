@@ -18,5 +18,17 @@ public class TodoController {
         return new ResponseEntity<>(todoService.createTodo(todo), HttpStatus.CREATED);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Todo> getTodoById(@PathVariable long id) {
+        try {
+            Todo todo = todoService.getTodoById(id);
+            return new ResponseEntity<>(todo, HttpStatus.OK);
+        } catch (RuntimeException exception) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+
+        }
+    }
+
+
 
 }
