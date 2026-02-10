@@ -2,6 +2,9 @@ package com.example.CRUD;
 
 import com.example.CRUD.models.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +18,13 @@ public class TodoService {
     public Todo createTodo(Todo todo) {
         return todoRepository.save(todo);
 
+    }
+
+    // Pageable info
+
+    public Page<Todo> getAllPages(int page, int size){
+        Pageable pageable = PageRequest.of(page, size);
+        return todoRepository.findAll(pageable);
     }
 
     public Todo getTodoById(Long id){
