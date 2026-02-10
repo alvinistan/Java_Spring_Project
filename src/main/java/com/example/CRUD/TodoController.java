@@ -15,10 +15,14 @@ public class TodoController {
     @Autowired
     private TodoService todoService;
 
+    // Create Elements Into H2 Database
+
     @PostMapping("/create")
     ResponseEntity<Todo> createUser(@RequestBody Todo todo){
         return new ResponseEntity<>(todoService.createTodo(todo), HttpStatus.CREATED);
     }
+
+    //  find Element By Id
 
     @GetMapping("/{id}")
     public ResponseEntity<Todo> getTodoById(@PathVariable long id) {
@@ -31,11 +35,24 @@ public class TodoController {
         }
     }
 
+    //     Get All Elements from H2 DB
+
     @GetMapping
     ResponseEntity<List<Todo>> getTodo(){
         return new ResponseEntity<List<Todo>>(todoService.getTodos(), HttpStatus.OK);
     }
 
+    // Update to the data from DB
+
+    @PutMapping
+    ResponseEntity<Todo> updateTodoById(@RequestBody Todo todo){
+        return new ResponseEntity<>(todoService.updateTodo(todo), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    void deleteTodoById(@PathVariable Long id){
+        todoService.deleteTodoById(id);
+    }
 
 
 
