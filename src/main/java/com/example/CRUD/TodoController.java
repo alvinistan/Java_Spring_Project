@@ -1,6 +1,7 @@
 package com.example.CRUD;
 
 import com.example.CRUD.models.Todo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/todo")
+//@Slf4j
 public class TodoController {
 
     @Autowired
@@ -31,6 +33,9 @@ public class TodoController {
             Todo todo = todoService.getTodoById(id);
             return new ResponseEntity<>(todo, HttpStatus.OK);
         } catch (RuntimeException exception) {
+//            log.info("Error");
+//            log.warn("");
+//            log.error("");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
         }
