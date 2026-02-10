@@ -2,16 +2,35 @@ package com.example.CRUD.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.*;
+
 
 @Entity
 public class Todo {
     @Id
     @GeneratedValue
     Long id;
+    @NotBlank(message = "title is required..")
     String title;
+    @NotBlank
+    //@Size(min = 2 ,max =10)
+    //@Pattern(regexp = "^[0-9]{10}$")
+    //@Min(1)
+    //@Max(10)
     String description;
     Boolean isCompleted;
+    @Email
+    String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public Long getId() {
         return id;
