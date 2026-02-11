@@ -1,6 +1,7 @@
-package com.example.CRUD;
+package com.example.CRUD.service;
 
 import com.example.CRUD.models.Todo;
+import com.example.CRUD.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

@@ -1,4 +1,4 @@
-package com.example.CRUD;
+package com.example.CRUD.repository;
 
 import com.example.CRUD.models.Todo;
 import org.springframework.data.jpa.repository.JpaRepository;
