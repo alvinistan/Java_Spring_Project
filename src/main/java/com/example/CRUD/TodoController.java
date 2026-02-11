@@ -75,6 +75,9 @@ public class TodoController {
 
     }
 
-
+    @GetMapping("/get")
+    public String firstpro(){
+        return "it html page";
+    }
 
 }
